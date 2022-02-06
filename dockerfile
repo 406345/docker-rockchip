@@ -3,9 +3,12 @@ MAINTAINER Caesar Wang "wxt@rock-chips.com"
 
 # setup multiarch enviroment
 RUN dpkg --add-architecture arm64
-RUN echo "deb-src http://deb.debian.org/debian buster main" >> /etc/apt/sources.list
-RUN echo "deb-src http://deb.debian.org/debian buster-updates main" >> /etc/apt/sources.list
-RUN echo "deb-src http://security.debian.org buster/updates main" >> /etc/apt/sources.list
+# RUN echo "deb-src http://deb.debian.org/debian buster main" >> /etc/apt/sources.list
+# RUN echo "deb-src http://deb.debian.org/debian buster-updates main" >> /etc/apt/sources.list
+# RUN echo "deb-src http://security.debian.org buster/updates main" >> /etc/apt/sources.list
+RUN echo "deb-src http://mirrors.tuna.tsinghua.edu.cn/debian/ buster main" >> /etc/apt/sources.list
+RUN echo "deb-src http://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main" >> /etc/apt/sources.list
+RUN echo "deb-src http://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main" >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -y crossbuild-essential-arm64
 
 ADD ./overlay/  /
